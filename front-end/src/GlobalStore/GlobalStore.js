@@ -17,7 +17,7 @@ export function GlobalStore({ children }){
 
     useEffect(()=>{
 
-        axios.get('https://todo-primary-project.herokuapp.com/api/getitems').then(res=>{
+        axios.get('http://localhost:5000/api/getitems').then(res=>{
 
             dispatch({
                 type: 'FETCH_ALL',
@@ -35,7 +35,7 @@ export function GlobalStore({ children }){
             task: task
         }
 
-        axios.post('https://todo-primary-project.herokuapp.com/api/additem', newTask).then( res => {
+        axios.post('http://localhost:5000/api/additem', newTask).then( res => {
 
             // As we added a new task, we need to display it on the UI
             dispatch({
@@ -49,7 +49,7 @@ export function GlobalStore({ children }){
 
     function deleteTask( id ){
 
-        axios.delete(`https://todo-primary-project.herokuapp.com/api/delteitem/${id}`).then((res)=>{
+        axios.delete(`http://localhost:5000/api/delteitem/${id}`).then((res)=>{
 
             dispatch({
                 type: 'DELETE_TASK',
@@ -62,7 +62,7 @@ export function GlobalStore({ children }){
 
     function completeTask( id ){
 
-        axios.patch(`https://todo-primary-project.herokuapp.com/api/completetask/${id}`).then( res => {
+        axios.patch(`http://localhost:5000/api/completetask/${id}`).then( res => {
 
             dispatch({
                 type: 'UPDATE_TASK',
